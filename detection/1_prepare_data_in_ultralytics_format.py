@@ -7,8 +7,8 @@ import json
 import shutil
 
 # root path to your data folder
-raw_data_root = '/media/cycyang/sda1/EE443_final/data'
-ultra_data_root = '/media/cycyang/sda1/EE443_final/ultralytics_data'
+raw_data_root = '/Users/alicjamisiuda/UW/ee443/final_project/data'
+ultra_data_root = '/Users/alicjamisiuda/UW/ee443/final_project/data_ultra_data'
 
 # shared variables
 W, H = 1920, 1080
