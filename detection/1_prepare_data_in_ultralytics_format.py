@@ -7,8 +7,8 @@ import json
 import shutil
 
 # root path to your data folder
-raw_data_root = '/media/cycyang/sda1/EE443_final/data'
-ultra_data_root = '/media/cycyang/sda1/EE443_final/ultralytics_data'
+raw_data_root = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/data/data'
+ultra_data_root = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/ultralytics_data'
 
 # shared variables
 W, H = 1920, 1080
@@ -16,7 +16,7 @@ data_list = {
     'train': ['camera_0001', 'camera_0003', 'camera_0011', 'camera_0013', 'camera_0020', 'camera_0021'],
     'val': ['camera_0005', 'camera_0017', 'camera_0025']
 }
-sample_rate = 100 # use 1 frame from every {sample_rate} frames to train
+sample_rate = 30 # Changed this to 30 for better performance
 
 for split in ['train', 'val']:
     # path where you want to move and rename the images 

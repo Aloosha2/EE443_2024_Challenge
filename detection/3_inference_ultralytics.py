@@ -2,17 +2,18 @@ import os
 from ultralytics import YOLO
 
 
-raw_data_root = '/media/cycyang/sda1/EE443_final/data'
+raw_data_root = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/data/data'
 
 W, H = 1920, 1080
 data_list = {
-    'test': ['camera_0008', 'camera_0019', 'camera_0028']
+    'test': ['camera_0008', 'camera_0019', 'camera_0028'],
+    'val': ['camera_0005', 'camera_0017', 'camera_0025'],
 }
 sample_rate = 1 # because we want to test on all frames
 vis_flag = True # set to True to save the visualizations
 
-exp_path = '/media/cycyang/sda1/EE443_final/runs/detect/inference'
-model_path = '/media/cycyang/sda1/EE443_final/runs/detect/train/weights/best.pt'
+exp_path = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/detection/runs/detect/inference'
+model_path = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/detection/runs/detect/train2/weights/best.pt'
 det_model = YOLO(model_path)
 
 for split in ['test']:

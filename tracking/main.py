@@ -8,20 +8,21 @@ from IoU_Tracker import tracker
 from Processing import postprocess
 
 
-raw_data_root = '/media/cycyang/sda1/EE443_final/data'
+raw_data_root = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/data/data'
 
 W, H = 1920, 1080
 data_list = {
-    'test': ['camera_0008', 'camera_0019', 'camera_0028']
+    'test': ['camera_0008', 'camera_0019', 'camera_0028'],
+    'val': ['camera_0005', 'camera_0017', 'camera_0025']
 }
 sample_rate = 1 # because we want to test on all frames
 vis_flag = True # set to True to save the visualizations
 
-exp_path = '/media/cycyang/sda1/EE443_final/runs/tracking/inference'
+exp_path = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/runs/tracking/inference'
 if not os.path.exists(exp_path):
     os.makedirs(exp_path)
-det_path = '/media/cycyang/sda1/EE443_final/runs/detect/inference/txt'
-emb_path = '/media/cycyang/sda1/EE443_final/runs/reid/inference'
+det_path = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/detection/runs/detect/inference/txt'
+emb_path = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/runs/reid/inference'
 
 
 for split in ['test']:
@@ -40,13 +41,8 @@ for split in ['test']:
         camera_id = int(folder.split('_')[-1])
         print(f"Tracking on camera {camera_id}")
 
-        # TODO
-        # Can we remove some low score detection here? For example, removing all the detections with condifence score lower than 0.3?
-        # Detection format: <camera ID>, <-1>, <Frame ID>, <x1>, <y1>, <w>, <h>, <confidence score>
-        # Remember to change the embedding file too if you modify the detection!
-
         mot = tracker()
-        postprocessing = postprocess(number_of_people=20, cluster_method='kmeans')
+        postprocessing = postprocess(number_of_people=25, cluster_method='kmeans')
 
         # Run the IoU tracking
         tracklets = mot.run(detection ,embedding)
@@ -75,60 +71,3 @@ for split in ['test']:
 
         with open(tracking_txt_path,'w') as f:
             f.writelines(tracking_result)
-
-
-# if __name__ == "__main__":
-
-#     # camera = 74 # validation set
-#     camera = 75 # test set
-
-#     number_of_people = 5
-
-#     result_path = 'baseline_result.txt'
-
-#     # Load the data
-#     detection = np.loadtxt('../detection.txt',delimiter=',',dtype=None)
-#     embedding = np.load('../embedding.npy', allow_pickle=True)
-#     inds = detection[:,0] == camera
-#     test_detection = detection[inds]
-#     test_embedding = embedding[inds]
-#     sort_inds = test_detection[:, 1].argsort()
-#     test_detection = test_detection[sort_inds]
-#     test_embedding = test_embedding[sort_inds]
-
-#     # TODO
-#     # Can we remove some low score detection here? For example, removing all the detections with condifence score lower than 0.3?
-#     # Detection format: <camera ID>, <-1>, <Frame ID>, <x1>, <y1>, <w>, <h>, <confidence score>
-#     # Remember to change the embedding file too if you modify the detection!
-
-#     mot = tracker()
-#     postprocessing = postprocess(number_of_people,'kmeans')
-
-    # # Run the IoU tracking
-    # tracklets = mot.run(test_detection,test_embedding)
-
-    # features = np.array([trk.final_features for trk in tracklets])
-
-    # # Run the Post Processing to merge the tracklets
-    # labels = postprocessing.run(features) # The label represents the final tracking ID, it starts from 0. We will make it start from 1 later.
-
-    # tracking_result = []
-
-    # print('Writing Result ... ')
-
-    # for i,trk in enumerate(tracklets):
-    #     final_tracking_id = labels[i]+1 # make it starts with 1
-    #     for idx in range(len(trk.boxes)):
-
-    #         frame = trk.times[idx]
-    #         x1,y1,x2,y2 = trk.boxes[idx]
-    #         x,y,w,h = x1,y1,x2-x1,y2-y1
-            
-    #         result = '{},{},{},{},{},{},{},-1,-1 \n'.format(camera, final_tracking_id, frame, x, y, w, h )
-    
-    #         tracking_result.append(result)
-    
-    # print('Save tracking results at {}'.format(result_path))
-
-    # with open(result_path,'w') as f:
-    #     f.writelines(tracking_result)

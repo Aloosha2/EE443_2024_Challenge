@@ -5,7 +5,7 @@ class postprocess:
     def __init__(self, number_of_people, cluster_method):
         self.n = number_of_people
         if cluster_method == 'kmeans':
-            self.cluster_method = KMeans(n_clusters=self.n, random_state=0)
+            self.cluster_method = KMeans(n_clusters=self.n, n_init=20)
         else:
             raise NotImplementedError
     

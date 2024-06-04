@@ -13,17 +13,18 @@ import torchreid
 from torchreid.reid.utils import FeatureExtractor
 
 
-raw_data_root = '/media/cycyang/sda1/EE443_final/data'
+raw_data_root = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/data/data'
 
 W, H = 1920, 1080
 data_list = {
-    'test': ['camera_0008', 'camera_0019', 'camera_0028']
+    'test': ['camera_0008', 'camera_0019', 'camera_0028'],
+    'val':  ['camera_0005', 'camera_0017', 'camera_0025']
 }
 sample_rate = 1 # because we want to test on all frames
 
-det_path = '/media/cycyang/sda1/EE443_final/runs/detect/inference/txt'
-exp_path = '/media/cycyang/sda1/EE443_final/runs/reid/inference'
-reid_model_ckpt = '/media/cycyang/sda1/EE443_final/reid/osnet_x1_0_imagenet.pth'
+det_path = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/detection/runs/detect/inference/txt'
+exp_path = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/runs/reid/inference'
+reid_model_ckpt = 'C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/reid/osnet_x1_0_imagenet.pth'
 
 val_transforms = T.Compose([
     T.Resize([256, 128]),
@@ -32,7 +33,7 @@ val_transforms = T.Compose([
 ])
 
 reid_extractor = FeatureExtractor(
-    model_name='osnet_x1_0',
+    model_name='osnet_x1_0', # confirmed to be the best model via trial and error
     model_path=reid_model_ckpt,
     image_size=[256, 128],
     device='cuda' 
@@ -73,8 +74,3 @@ for split in ['test']:
         if not os.path.exists(exp_path):
             os.makedirs(exp_path)
         np.save(emb_save_path,emb)
-
-
-# TODO 
-# 1. You can try to extract features from the validation set since we have the ground truth labels
-# 2. To determine how good the features, simply use the features to do the clustering and compare the clustering result with the ground truth labels

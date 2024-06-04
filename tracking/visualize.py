@@ -9,8 +9,8 @@ import cv2
 
 import numpy as np
 
-results = "/media/cycyang/sda1/EE443_final/runs/tracking/inference/camera_0008.txt"
-image_path = "/media/cycyang/sda1/EE443_final/data/test/camera_0008"
+results = "C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/runs/tracking/inference/camera_0008.txt"
+image_path = "C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/data/data/test/camera_0008"
 
 # load the tracking results
 tracking_results = np.loadtxt(results, delimiter=',', dtype=None)
@@ -27,7 +27,7 @@ for frame_id, tracking_result in zip(frame_ids, tracking_results):
     img_path = osp.join(image_path, frame_id + '.jpg')
     print(f"Visualizing frame {frame_id} from {img_path}")
 
-    new_img_path = osp.join("/media/cycyang/sda1/EE443_final/runs/tracking/inference/vis", frame_id + '.jpg')
+    new_img_path = osp.join("C:/Users/konya/Desktop/UW/ee classes/ee443/EE443_2024_Challenge/runs/tracking/inference/vis", frame_id + '.jpg')
 
 
     img = cv2.imread(img_path)

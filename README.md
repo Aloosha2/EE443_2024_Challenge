@@ -1,62 +1,19 @@
 # EE 443 2024 Challenge: Single Camera Multi-Object Tracking
 
-### TA: Chris Yang (cycyang), Chris Yin (c8yin)
+# Team name: Amnesty
 
-### Task Description
-The EE 443 2024 Challenge: Single Camera Multi-Object Tracking aims to enhance the performance of object detection and tracking algorithms in single-camera environments. Participants will focus on improving detection models, ReID (Re-identification) models, and Multi-Object Tracking (MOT) algorithms to achieve superior object tracking accuracy.
+Here is how the repo is organized per folder:
 
-### Important Dates
-- Release of the Challenge & Data: May 3rd, 2024
-- Team Registration Due: May 8th | 11:59:59 pm
-- Release of the Baseline Code: May 9th | 11:59:59 pm
-- Final Submission (Results) Due: June 3rd | 11:59:59 pm
-- Final Presentation (in-person): June 4th & June 6th
-- Github & Final Report Due: June 7th | 11:59:59 pm
+detection: Contains the models as well as the provided starter code. The trained models are saved here, as well as the inference results for test and validation sets. 
 
-### Baseline Code for Detection
+evaluation: Contains the script used to evaluate the accuracy. We used camera 5 for evaluation. Here, "camera_0005_gt.txt" is the ground truth, and "camera_0005.txt" is the tracking result.
 
-1. Install ultralytics (follow the [Quickstart - Ultralytics](https://docs.ultralytics.com/quickstart/#install-ultralytics))
+reid: Includes the feature extraction code provided by the TA as well as the model weights. 
 
-2. Download the `data.zip` from GDrive link provided in the Ed Discussion
+tracking: Contains the tracking code provided by the TA.
 
-Your folder structure should look like this:
-```
-├── data
-│   ├── test
-│   ├── train
-│   └── val
-├── detection
-│   ├── 1_prepare_data_in_ultralytics_format.py
-│   ├── 2_train_ultralytics.py
-│   ├── 3_inference_ultralytics.py
-│   └── ee443.yaml
-```
+Additional created files:
 
-4. Prepare the dataset into ultralytics format (remember to modified the path in the script)
-```
-python3 detection/1_prepare_data_in_ultralytics_format.py
-```
-After the script, your `ultralytics_data` folder should looke like this:
-```
-├── data
-├── detection
-├── ultralytics_data
-│   ├── train
-│   │   ├── images
-│   │   └── labels
-│   └── val
-│       ├── images
-│       └── labels
-```
+concat.ipynb: Performs the concatenation of two numpy files taken from the feature extraction step as an attempt to improve performance.
 
-4. Train the model using ultralytics formatted data (remember to modified the path in the script and config file `ee443.yaml`)
-```
-python3 detection/2_train_ultralytics.py
-```
-You model will be saved to `runs/detect/` with an unique naming.
-
-5. Inference the model using the testing data (remember to modified the path in the script)
-```
-python3 detection/3_inference_ultralytics.py
-```
-
+filter.py: Filters out the low-confidence values from the model results as an attempt to improve performance. 
