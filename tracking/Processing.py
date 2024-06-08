@@ -1,24 +1,6 @@
 from sklearn.cluster import KMeans, AgglomerativeClustering, DBSCAN
 
 class postprocess:
-    """
-    A class to perform clustering on given feature data using specified clustering methods.
-    
-    Attributes:
-    -----------
-    n : int
-        The number of clusters or people.
-    cluster_method : object
-        An instance of the chosen clustering algorithm.
-    
-    Methods:
-    --------
-    __init__(number_of_people, cluster_method):
-        Initializes the postprocess class with the number of clusters and the chosen clustering method.
-    
-    run(features):
-        Runs the clustering algorithm on the provided features and returns the cluster labels.
-    """
     
     def __init__(self, number_of_people, cluster_method):
         """
