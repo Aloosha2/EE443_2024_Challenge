@@ -12,8 +12,5 @@ reid: Includes the feature extraction code provided by the TA as well as the mod
 
 tracking: Contains the tracking code provided by the TA.
 
-Additional created files:
-
-concat.ipynb: Performs the concatenation of two numpy files taken from the feature extraction step as an attempt to improve performance.
-
-filter.py: Filters out the low-confidence values from the model results as an attempt to improve performance. 
+Within each file, each one has a Readme.txt file indicating what was changed.
+________________________________________________________________________________________________________________________________
