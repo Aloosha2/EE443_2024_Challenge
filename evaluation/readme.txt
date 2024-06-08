@@ -3,7 +3,7 @@ This module is responsible for evaluating the performance of the multi-object tr
 
 This is the evaluation code, you can use this to evaluate your tracking algorithm.
 
-________________________________________________________________________________________________________________________________________________
+________________________________________________________________________________________________________________________________
 
 Before using the code, please use the following command to install the required enviroments.
 1. conda create -n mtmceval python=3.8
