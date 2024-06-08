@@ -1,6 +1,6 @@
 Changes: 
-Processing.py:
-main.py:
+Processing.py: Added different types of clustering to attempt.
+main.py: Changed number of cluster calculation, Added filtering, added attempted code to consider array of features (commented)
 
 ======================================================================================================================================================================
 This is a baseline tracking method provided by TA.
