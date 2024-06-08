@@ -132,6 +132,10 @@ for split in ['test']:
         # Run the post-processing step to merge tracklets
         labels = postprocessing.run(features)  # The label represents the final tracking ID, starting from 0
 
+        ## WE TRIED
+        # features = np.array([trk.features for trk in tracklets])
+        # labels = postprocessing.run(features)
+
         tracking_result = []
 
         print('Writing Result ... ')
