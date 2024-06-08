@@ -3,3 +3,4 @@ This module is responsible for extracting features from detected bounding boxes 
 
 Changes:
 Nothing was changed here, the models we tried were not used in the final format and are listed in the report. 
+________________________________________________________________________________________________________________________________
