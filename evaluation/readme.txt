@@ -1,3 +1,6 @@
+Evaluation Module
+This module is responsible for evaluating the performance of the multi-object tracking (MOT) system. It calculates metrics such as MOTA (Multi-Object Tracking Accuracy) and MOTP (Multi-Object Tracking Precision) to assess the accuracy and precision of the tracker.
+
 This is the evaluation code, you can use this to evaluate your tracking algorithm.
 
 Before using the code, please use the following command to install the required enviroments.
