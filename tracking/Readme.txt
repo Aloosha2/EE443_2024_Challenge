@@ -1,3 +1,6 @@
+Multi-Object Tracking (MOT) Module
+This module is responsible for tracking multiple objects (people) across video frames using bounding box IoU (Intersection over Union). It includes tracking initialization, updating tracklets, and post-processing with clustering methods.
+
 Changes: 
 Processing.py: Added different types of clustering to attempt.
 main.py: Changed number of cluster calculation, Added filtering, added attempted code to consider array of features (commented)
